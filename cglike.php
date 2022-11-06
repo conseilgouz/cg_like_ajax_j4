@@ -1,42 +1,40 @@
 <?php 
 defined('_JEXEC') or die;
 /**
- * File       cg_like_ajax.php
+ * File       cg_like_ajax.php for Joomla 4.x
  * Author     ConseilGouz
  * Support    https://www.conseilgouz.com
- * Copyright  Copyright (C) 2021 ConseilGouz. All Rights Reserved.
+ * Copyright  Copyright (C) 2022 ConseilGouz. All Rights Reserved.
  * License    GNU GPL v2 or later
- * version 2.0.0 
  */
 use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\Registry\Registry;
 
 class plgAjaxCGLike extends CMSPlugin
 {
 	private $min_php_version         = '7.3';
-
+	protected $autoloadLanguage = true;
+	
 	function onAjaxCglike()	{
-		$lang = Factory::getLanguage();
-		$lang->load('plg_ajax_cglike', __DIR__);
 		$input	= Factory::getApplication()->input;
-		$data  = $input->get('data', '', 'string');
-		parse_str($data,$output);
-		$id		= $output['id'];
+		$id  = $input->get('id', '', 'integer');
 		$out = "";
 		if (!self::cookie($id)) {// cookie exist => exit
-		    $out .='{"ret":"9","msg":"'.JText::_("CG_AJAX_ALREADY").'"}';
+		    $out .='{"ret":"9","msg":"'.Text::_("CG_AJAX_ALREADY").'"}';
 		    return $out;
 		}
 		$plugin = PluginHelper::getPlugin('content', 'cglike');
-		$params = new JRegistry($plugin->params);
+		$params = new Registry($plugin->params);
 		self::setcookie($id,$params);
 		if (!self::addOne($id)) {
-			$out .= '{"ret":"9","msg":"'.JText::_("CG_AJAX_SQL_ERROR").'"}';
+			$out .= '{"ret":"9","msg":"'.Text::_("CG_AJAX_SQL_ERROR").'"}';
 			return $out;
 		}
 		$count = self::countId($id);
-		$out .='{"ret":"0","msg":"'.JText::_("CG_AJAX_THANKS").'","cnt":"'.$count.'"}';
+		$out .='{"ret":"0","msg":"'.Text::_("CG_AJAX_THANKS").'","cnt":"'.$count.'"}';
 		return $out;
 	}
 	function cookie($id) {
