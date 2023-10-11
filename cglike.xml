@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="4.0" type="plugin" group="ajax" method="upgrade">
 	<name>Ajax - CG Like plugin</name>
-	<version>2.0.1</version>
-	<creationDate>November 2022</creationDate>
+	<version>2.0.2</version>
+	<creationDate>2023-10-13</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>https://www.conseilgouz.com</authorUrl>
-	<license>GNU General Public License version 2 or later</license>
-	<copyright>Copyright (C) 2022 ConseilGouz. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later</license>
+	<copyright>Copyright (C) 2023 ConseilGouz. All rights reserved.</copyright>
 	<description>Joomla Ajax Like Plugin</description>
 
 	<files>

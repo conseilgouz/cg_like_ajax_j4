@@ -1,11 +1,11 @@
 <?php 
 defined('_JEXEC') or die;
 /**
- * File       cg_like_ajax.php for Joomla 4.x
+ * File       cg_like_ajax.php for Joomla 4.x/5.x
  * Author     ConseilGouz
  * Support    https://www.conseilgouz.com
- * Copyright  Copyright (C) 2022 ConseilGouz. All Rights Reserved.
- * License    GNU GPL v2 or later
+ * Copyright  Copyright (C) 2023 ConseilGouz. All Rights Reserved.
+ * License    GNU GPL v3 or later
  */
 use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\CMSPlugin;
@@ -15,7 +15,7 @@ use Joomla\Registry\Registry;
 
 class plgAjaxCGLike extends CMSPlugin
 {
-	private $min_php_version         = '7.3';
+	private $min_php_version         = '7.4';
 	protected $autoloadLanguage = true;
 	
 	function onAjaxCglike()	{
@@ -53,7 +53,10 @@ class plgAjaxCGLike extends CMSPlugin
 		$expire =  time()+3600*24*$duration;
 		$path = "/";
 		$domain = "";
-		$secure = $_SERVER["HTTPS"] ? true : false;
+		$secure = true; // assume https
+		if (array_key_exists("HTTPS",$_SERVER) {
+			$secure = $_SERVER["HTTPS"] ? true : false;
+		}
 		$httponly = false;
 		if (PHP_VERSION_ID < 70300) {
 			setcookie($name, $value, $expire, "$path; samesite=Lax", $domain, $secure, $httponly);
