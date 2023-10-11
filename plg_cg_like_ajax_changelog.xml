@@ -1,0 +1,38 @@
+<changelogs>
+	<changelog>
+		<element>cg_like</element>
+		<type>plugin</type>
+		<group>ajax</group>
+		<version>2.0.4</version>
+        <note>
+            <item>11/10/2023</item>
+        </note>
+         <fix>
+			<item>Edge/Firefox compatibility : $_SERVER["HTTPS"] may not exist</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cg_like</element>
+		<group>ajax</group>
+		<type>plugin</type>
+		<version>2.0.1</version>
+        <note>
+            <item>06/11/2022</item>
+        </note>
+         <fix>
+			<item>CGLike 2.0.1 compatibility</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cg_like</element>
+		<group>ajax</group>
+		<type>plugin</type>
+		<version>2.0.0</version>
+        <note>
+            <item>23/04/2022</item>
+        </note>
+		<addition>
+			<item>Joomla 4 plugin</item>
+		</addition>
+	</changelog>
+</changelogs>
