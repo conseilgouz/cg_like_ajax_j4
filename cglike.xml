@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="4.0" type="plugin" group="ajax" method="upgrade">
 	<name>Ajax - CG Like plugin</name>
-	<version>2.0.2</version>
+	<version>2.0.4</version>
 	<creationDate>2023-10-13</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>

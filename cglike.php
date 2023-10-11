@@ -54,7 +54,7 @@ class plgAjaxCGLike extends CMSPlugin
 		$path = "/";
 		$domain = "";
 		$secure = true; // assume https
-		if (array_key_exists("HTTPS",$_SERVER) {
+		if (array_key_exists("HTTPS",$_SERVER)) {
 			$secure = $_SERVER["HTTPS"] ? true : false;
 		}
 		$httponly = false;
