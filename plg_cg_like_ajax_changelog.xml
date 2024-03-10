@@ -3,6 +3,18 @@
 		<element>cg_like</element>
 		<type>plugin</type>
 		<group>ajax</group>
+		<version>2.1.1</version>
+        <note>
+            <item>10/03/2023</item>
+        </note>
+        <fix>
+			<item>add link to changelog in xml</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cg_like</element>
+		<type>plugin</type>
+		<group>ajax</group>
 		<version>2.1.0</version>
         <note>
             <item>10/03/2023</item>

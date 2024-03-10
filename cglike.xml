@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="4.0" type="plugin" group="ajax" method="upgrade">
 	<name>Ajax - CG Like plugin</name>
-	<version>2.1.0</version>
+	<version>2.1.1</version>
 	<creationDate>2024-03-10</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
@@ -21,7 +21,7 @@
 		<language tag="en-GB">language/en-GB/plg_ajax_cglike.ini</language>
 		<language tag="en-GB">language/en-GB/plg_ajax_cglike.sys.ini</language>
 	</languages>
-	
+    <changelogurl>https://raw.githubusercontent.com/conseilgouz/cg_like_ajax_j4/master/plg_cg_like_ajax_changelog.xml</changelogurl>
     <updateservers>
         <server type="extension" folder="ajax" priority="1" name="cglike">https://raw.githubusercontent.com/conseilgouz/updates_github/master/cg_like_ajax_update.xml</server>
     </updateservers>
