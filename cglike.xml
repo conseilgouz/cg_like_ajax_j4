@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="4.0" type="plugin" group="ajax" method="upgrade">
 	<name>Ajax - CG Like plugin</name>
-	<version>2.0.4</version>
-	<creationDate>2023-10-13</creationDate>
+	<version>2.1.0</version>
+	<creationDate>2024-03-10</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>https://www.conseilgouz.com</authorUrl>
 	<license>GNU General Public License version 3 or later</license>
-	<copyright>Copyright (C) 2023 ConseilGouz. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2024 ConseilGouz. All rights reserved.</copyright>
 	<description>Joomla Ajax Like Plugin</description>
-
+    <namespace path="src">ConseilGouz\Plugin\Ajax\Cglike</namespace>
 	<files>
-		<filename plugin="cglike">cglike.php</filename>
-		<filename >cglike.xml</filename>
+		<folder plugin="cglike">services</folder>
+		<folder>src</folder>
 		<filename>index.html</filename>
 	</files>
 	<languages>

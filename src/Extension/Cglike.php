@@ -1,41 +1,52 @@
 <?php 
-defined('_JEXEC') or die;
 /**
  * File       cg_like_ajax.php for Joomla 4.x/5.x
  * Author     ConseilGouz
  * Support    https://www.conseilgouz.com
- * Copyright  Copyright (C) 2023 ConseilGouz. All Rights Reserved.
+ * Copyright  Copyright (C) 2024 ConseilGouz. All Rights Reserved.
  * License    GNU GPL v3 or later
  */
+namespace ConseilGouz\Plugin\Ajax\Cglike\Extension;
+
+defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\Registry\Registry;
+use Joomla\Event\SubscriberInterface;
+use Joomla\Database\DatabaseAwareTrait;
 
-class plgAjaxCGLike extends CMSPlugin
+class Cglike extends CMSPlugin implements SubscriberInterface
 {
-	private $min_php_version         = '7.4';
+    use DatabaseAwareTrait;
+
 	protected $autoloadLanguage = true;
-	
-	function onAjaxCglike()	{
+    
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onAjaxCglike'   => 'goAjax',
+        ];
+    }
+	function goAjax($event) {
 		$input	= Factory::getApplication()->input;
 		$id  = $input->get('id', '', 'integer');
 		$out = "";
 		if (!self::cookie($id)) {// cookie exist => exit
 		    $out .='{"ret":"9","msg":"'.Text::_("CG_AJAX_ALREADY").'"}';
-		    return $out;
+		    return  $event->addResult($out);
 		}
 		$plugin = PluginHelper::getPlugin('content', 'cglike');
 		$params = new Registry($plugin->params);
 		self::setcookie($id,$params);
 		if (!self::addOne($id)) {
 			$out .= '{"ret":"9","msg":"'.Text::_("CG_AJAX_SQL_ERROR").'"}';
-			return $out;
+			return  $event->addResult($out);
 		}
 		$count = self::countId($id);
 		$out .='{"ret":"0","msg":"'.Text::_("CG_AJAX_THANKS").'","cnt":"'.$count.'"}';
-		return $out;
+		return  $event->addResult($out);
 	}
 	function cookie($id) {
 		$jinput = Factory::getApplication()->input;
@@ -73,7 +84,7 @@ class plgAjaxCGLike extends CMSPlugin
 		}	
 	}
 	function addOne($id) {
-		$db		= Factory::getDbo();
+		$db    = $this->getDatabase();
 		$query = $db->getQuery(true);
 		$query->insert('#__cg_like');
 		$query->set('cid = '.$db->quote($id));
@@ -85,7 +96,7 @@ class plgAjaxCGLike extends CMSPlugin
 		return true;
 	}
 	function countId($id) {
-		$db		= Factory::getDbo();
+		$db  = $this->getDatabase();
 		$query = $db->getQuery(true);
 		$query   ->select( 'COUNT(id)') 
 				->from($db->quoteName('#__cg_like'))
